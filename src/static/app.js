@@ -19,7 +19,58 @@ document.addEventListener("DOMContentLoaded", () => {
         activityCard.className = "activity-card";
 
         const spotsLeft = details.max_participants - details.participants.length;
-
+        if (details.category === "sports") {
+          activityCard.classList.add("sports");
+        } else if (details.category === "artistic") {
+          activityCard.classList.add("artistic");
+        } else if (details.category === "intellectual") {
+          activityCard.classList.add("intellectual");
+        }
+        // Add sample activities if not present
+        if (Object.keys(activities).length === 1 && name === "Soccer") {
+          activities["Basketball"] = {
+            description: "Join a friendly basketball match for all skill levels.",
+            schedule: "Saturdays, 4pm-6pm",
+            max_participants: 12,
+            participants: [],
+            category: "sports"
+          };
+          activities["Swimming"] = {
+            description: "Group swimming sessions with a coach.",
+            schedule: "Fridays, 5pm-6pm",
+            max_participants: 10,
+            participants: [],
+            category: "sports"
+          };
+          activities["Painting"] = {
+            description: "Explore your creativity with painting workshops.",
+            schedule: "Wednesdays, 3pm-5pm",
+            max_participants: 8,
+            participants: [],
+            category: "artistic"
+          };
+          activities["Photography"] = {
+            description: "Learn photography basics and go on photo walks.",
+            schedule: "Sundays, 10am-12pm",
+            max_participants: 10,
+            participants: [],
+            category: "artistic"
+          };
+          activities["Chess Club"] = {
+            description: "Weekly chess club for all levels.",
+            schedule: "Mondays, 6pm-8pm",
+            max_participants: 16,
+            participants: [],
+            category: "intellectual"
+          };
+          activities["Book Discussion"] = {
+            description: "Join our monthly book discussion group.",
+            schedule: "Last Thursday of the month, 7pm-8:30pm",
+            max_participants: 20,
+            participants: [],
+            category: "intellectual"
+          };
+        }
         activityCard.innerHTML = `
           <h4>${name}</h4>
           <p>${details.description}</p>
