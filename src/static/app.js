@@ -19,7 +19,13 @@ document.addEventListener("DOMContentLoaded", () => {
         activityCard.className = "activity-card";
 
         const spotsLeft = details.max_participants - details.participants.length;
-
+        if (details.category === "sports") {
+          activityCard.classList.add("sports");
+        } else if (details.category === "artistic") {
+          activityCard.classList.add("artistic");
+        } else if (details.category === "intellectual") {
+          activityCard.classList.add("intellectual");
+        }
         activityCard.innerHTML = `
           <h4>${name}</h4>
           <p>${details.description}</p>
